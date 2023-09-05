@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnImmutable", "LearnImmutable\LearnImmutable.csproj", "{C2EB4ED9-198A-4F1D-860C-4A4FA3B54CC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnImmutableTest", "LearnImmutableTest\LearnImmutableTest.csproj", "{895A5B3A-BDB6-4844-8623-AFADA7AE55EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C2EB4ED9-198A-4F1D-860C-4A4FA3B54CC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2EB4ED9-198A-4F1D-860C-4A4FA3B54CC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2EB4ED9-198A-4F1D-860C-4A4FA3B54CC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{895A5B3A-BDB6-4844-8623-AFADA7AE55EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{895A5B3A-BDB6-4844-8623-AFADA7AE55EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{895A5B3A-BDB6-4844-8623-AFADA7AE55EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{895A5B3A-BDB6-4844-8623-AFADA7AE55EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
