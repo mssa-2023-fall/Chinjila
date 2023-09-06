@@ -13,7 +13,7 @@ Console.WriteLine("Done");
 
 void PrintTree(TreeNode<FileSystemInfo> tree,int level=0)
 {
-    Console.WriteLine(new String('-',level) + tree.ToString());
+    Console.WriteLine(new String(' ', level*3)+ "└─" + new String('─', level) + tree.ToString());
     level++;
     foreach (var item in tree.Children)
     {
