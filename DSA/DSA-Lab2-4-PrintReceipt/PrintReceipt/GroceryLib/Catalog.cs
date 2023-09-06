@@ -13,7 +13,8 @@ namespace GroceryLib
             new Product(2,"Banana",2.49M),
             new Product(3,"Orange",0.99M),
             new Product(4,"Peach",1.29M),
-            new Product(5,"Watermelon",3.99M)
+            new Product(5,"Watermelon",3.99M),
+            new Product(6,"Grape",2.99M)
         };
 
         public static StringBuilder PrintMenu() {
