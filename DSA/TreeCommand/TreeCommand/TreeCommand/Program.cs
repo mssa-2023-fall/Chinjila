@@ -5,9 +5,9 @@ using System.IO;
 
 var startingDir = args[0];
 
-TreeNode<FileSystemInfo> tree = new(new DirectoryInfo(startingDir));
-BuildTree(tree);
-PrintTree(tree);
+TreeNode<FileSystemInfo> rootNode = new(new DirectoryInfo(startingDir));
+BuildTree(rootNode);
+PrintTree(rootNode);
 Console.WriteLine("Done");
 
 
@@ -22,57 +22,29 @@ void PrintTree(TreeNode<FileSystemInfo> tree,int level=0)
 }
 
 
-void BuildTree(TreeNode<FileSystemInfo> tree)
+void BuildTree(TreeNode<FileSystemInfo> parent)
 {
-    switch (tree.NodeContent)
-    {
-        case DirectoryInfo dir:
-            if (dir.GetDirectories().Length > 0)
+        DirectoryInfo? dir = parent.NodeContent as DirectoryInfo;
+   
+        if (dir?.GetDirectories().Length > 0)
+        {
+            foreach (var directory in dir.GetDirectories())
             {
-                foreach (var directory in dir.GetDirectories()) {
-                    var dirNode = new TreeNode<FileSystemInfo>(directory, tree);
-                    tree.AppendChildNode(dirNode);
-                    BuildTree(dirNode);
-                }
+                var dirNode = new TreeNode<FileSystemInfo>(directory, parent);
+                parent.AppendChildNode(dirNode);
+                BuildTree(dirNode);
             }
-            if (dir.GetFiles().Length > 0)
+        }
+        if (dir?.GetFiles().Length > 0)
+        {
+            foreach (var file in dir.GetFiles())
             {
-                foreach (var file in dir.GetFiles())
-                {
-                    var fileNode = new TreeNode<FileSystemInfo>(file, tree);
-                    tree.AppendChildNode(fileNode);
-                    BuildTree(fileNode);
-                }
+                var fileNode = new TreeNode<FileSystemInfo>(file, parent);
+                parent.AppendChildNode(fileNode);
+
             }
-            break;
-        //case FileInfo file:
-        //    var childFileNode = new TreeNode<FileSystemInfo>(file, tree);
-        //    tree.AppendChildNode(childFileNode);
-        //    break;
-        default:
-            break;
-    }
-    
+        }
 }
 
-//PrintDir(startingDir, 0); //old implementation, string based
 
-void PrintDir(string startingDir, int level)
-{
-    string[] subdirs = Directory.GetDirectories(startingDir);
-    if (subdirs.Length == 0) return;
-    foreach (var item in subdirs)
-    {
-        try
-        {
-            Console.WriteLine($"{new String('-', level)} {item}");
-            PrintDir(item, level + 1);
-        }
-        catch (Exception)
-        {
-
-            continue;
-        }
-    }
-}
 
