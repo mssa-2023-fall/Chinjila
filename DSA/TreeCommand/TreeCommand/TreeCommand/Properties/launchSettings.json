@@ -2,7 +2,7 @@
   "profiles": {
     "TreeCommand": {
       "commandName": "Project",
-      "commandLineArgs": "\"C:\\Repos\""
+      "commandLineArgs": "\"C:\\Repos\\TempFolder\\TempConsoleApp\""
     }
   }
 }
