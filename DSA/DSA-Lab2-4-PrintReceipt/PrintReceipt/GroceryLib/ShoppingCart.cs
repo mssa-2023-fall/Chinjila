@@ -35,6 +35,10 @@ namespace GroceryLib
 
             return sb;
         }
+        public override string ToString()
+        {
+            return PrintCart().ToString();
+        }
 
     }
 }

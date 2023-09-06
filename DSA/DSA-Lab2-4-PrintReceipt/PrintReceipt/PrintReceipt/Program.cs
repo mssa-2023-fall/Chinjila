@@ -27,7 +27,7 @@ do {
 
     cart.AddItemToCart(Catalog.Products[ItemID - 1]);
     Console.WriteLine("Add more item to cart? Y to add more, any other key to print receipt.");
-    if (Console.ReadKey() == new ConsoleKeyInfo('y', ConsoleKey.Y, false, false, false)) {
+    if (Console.ReadKey(false) == new ConsoleKeyInfo('y', ConsoleKey.Y, false, false, false)) {
         addMoreItem = true;
     } else { addMoreItem = false; }
 } while (addMoreItem);
