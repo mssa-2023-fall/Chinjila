@@ -31,5 +31,6 @@ do {
         addMoreItem = true;
     } else { addMoreItem = false; }
 } while (addMoreItem);
+
 Console.WriteLine("\n************receipt*********");
 Console.WriteLine(cart.PrintCart().ToString());
