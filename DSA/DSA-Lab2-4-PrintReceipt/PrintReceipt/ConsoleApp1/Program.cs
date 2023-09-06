@@ -33,8 +33,8 @@ namespace ConsoleApp30
             }
             if (paramArray.Length > 0)
             {
-                paramArray[indexOfMax] = originalArrary[paramArray.Length - 1];
-                originalArrary[paramArray.Length-1] = max;
+                paramArray[indexOfMax] = originalArrary[paramArray.Length - 1]; // preserve the last item in paramArray
+                originalArrary[paramArray.Length-1] = max;//store the max value to the correct position
                 PutTheLargestNumberAtTheEnd(paramArray[0..^1]);
             }
         }
