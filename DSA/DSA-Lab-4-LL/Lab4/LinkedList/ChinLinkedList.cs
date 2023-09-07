@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -63,7 +64,7 @@ namespace LinkedList
 
         public void AddLast(INode<T> value)
         {
-            this.Tail.LinkNext(value);
+            this.Tail?.LinkNext(value);
             Count++;
         }
 
@@ -96,12 +97,41 @@ namespace LinkedList
 
         public void InsertAfterNodeIndex(INode<T> value, int position)
         {
-            throw new NotImplementedException();
+            if (position < 0 || position >= this.Count) throw new InvalidOperationException();
+            if (position == Count-1) { this.AddLast(value); return; }
+            int loopCounter = 0;
+
+            INode<T>? theNodeToAppend = null;
+            foreach (INode<T> node in this.Nodes) {
+                if (loopCounter==position)
+                {
+                    theNodeToAppend = node;
+                    break;
+                }
+                loopCounter++;
+            }
+            value.LinkNext(theNodeToAppend.Next());
+            theNodeToAppend.LinkNext(value);
+            Count++;
         }
 
         public void RemoveAt(int IndexPosition)
         {
-            if (Head == null || Count == 0) throw new InvalidOperationException();
+            if (Head == null 
+                || Count == 0 
+                || IndexPosition>Count-1 
+                || IndexPosition<0) throw new InvalidOperationException();
+
+            INode<T>? prevNode=Head;
+            if (IndexPosition==0) { this.RemoveFirst(); return; };
+            if (IndexPosition == Count-1) { this.RemoveLast(); return; };
+            for (int i = 1; i < IndexPosition; i++) {
+                prevNode = prevNode?.Next();
+            }
+            prevNode?.LinkNext(prevNode?.Next()?.Next());
+            Count--;
+
+
         }
 
         public void RemoveFirst()
@@ -116,6 +146,14 @@ namespace LinkedList
         public void RemoveLast()
         {
             if (Head == null || Count == 0) throw new InvalidOperationException();
+            var node = Head;
+            while (node.Next()!=Tail) {
+                node = node.Next();
+                continue;
+            }
+            node.LinkNext(null);
+            Count--;
+
         }
     }
 }
