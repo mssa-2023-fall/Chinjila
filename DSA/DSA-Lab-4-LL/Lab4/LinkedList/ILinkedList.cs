@@ -18,8 +18,8 @@ namespace LinkedList
         void RemoveLast();
         INode<T>? FindFirst(T value);
         INode<T>[] FindAll(T value);
-        INode<T> Head { get; }
-        INode<T> Tail { get; }
+        INode<T>? Head { get; }
+        INode<T>? Tail { get; }
 
         IEnumerable<INode<T>> Nodes { get; }
     }
@@ -27,6 +27,7 @@ namespace LinkedList
     {
         T Content { get; set; }
         INode<T>? Next();
+        void LinkNext(INode<T> nextNode);
     }
 
 }
