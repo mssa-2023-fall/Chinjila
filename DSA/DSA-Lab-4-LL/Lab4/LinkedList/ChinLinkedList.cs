@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LinkedList
 {
-    public class ChinLinkedList<T> : ILinkedList<T>
+    public class ChinLinkedList<T> : ILinkedList<T>, IEnumerable<T>
     {
        
 
@@ -41,18 +42,6 @@ namespace LinkedList
 
          }
 
-        public IEnumerable<INode<T>> Nodes
-        {
-            get { 
-                INode<T> node= Head;
-                yield return Head;
-                while (node?.Next() != null) {  
-                    node = node.Next();
-                    yield return node;
-                }
-            }
-        }
-
         public void AddFirst(INode<T> value)
         {
             if (this.Head != null)
@@ -61,11 +50,19 @@ namespace LinkedList
             this.Head = value;
             Count++;
         }
-
+        public void AddFirst(T value)
+        {
+            var newNode = new ChinNode<T>(value);
+            AddFirst(newNode);
+        }
         public void AddLast(INode<T> value)
         {
             this.Tail?.LinkNext(value);
             Count++;
+        }
+        public void AddLast(T value)
+        {
+            AddLast(new ChinNode<T>(value));
         }
 
         public void Clear()
@@ -73,7 +70,7 @@ namespace LinkedList
             Count = 0;
             Head = null;
         }
-
+      
         public INode<T>[] FindAll(T value)
         {
             INode<T>[] result = new INode<T>[0];
@@ -115,6 +112,8 @@ namespace LinkedList
             Count++;
         }
 
+ 
+
         public void RemoveAt(int IndexPosition)
         {
             if (Head == null 
@@ -128,10 +127,8 @@ namespace LinkedList
             for (int i = 1; i < IndexPosition; i++) {
                 prevNode = prevNode?.Next();
             }
-            prevNode?.LinkNext(prevNode?.Next()?.Next());
+            prevNode!.LinkNext(prevNode!.Next()!.Next());
             Count--;
-
-
         }
 
         public void RemoveFirst()
@@ -155,5 +152,41 @@ namespace LinkedList
             Count--;
 
         }
+
+        public IEnumerable<INode<T>> Nodes
+        {
+            get
+            {
+                INode<T> node = Head;
+                yield return Head;
+                while (node?.Next() != null)
+                {
+                    node = node.Next();
+                    yield return node;
+                }
+            }
+        }
+        public IEnumerable<T> Content
+        {
+            get
+            {
+                INode<T> node = Head;
+                yield return Head.Content;
+                while (node?.Next() != null)
+                {
+                    node = node.Next();
+                    yield return node.Content;
+                }
+            }
+        }
+
+        public T Current => Content.GetEnumerator().Current;
+        public bool MoveNext() => Content.GetEnumerator().MoveNext();
+       
+        public void Reset()=> Content.GetEnumerator().Reset();
+
+        public IEnumerator<T> GetEnumerator()=> Content.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => this.Content.GetEnumerator();
     }
 }
