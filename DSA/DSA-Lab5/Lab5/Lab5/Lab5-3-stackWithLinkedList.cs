@@ -3,9 +3,9 @@ using System.Collections;
 namespace Lab5
 {
     [TestClass]
-    public class StackTest
+    public class VictorStackTest
     {
-        Stack<string> stack= new Stack<string>(5);
+        VictorStack<string> stack= new VictorStack<string>();
   
         [TestMethod]
         public void TestPush()
@@ -38,6 +38,12 @@ namespace Lab5
             Assert.AreEqual(3, stack.Count);
         }
         [TestMethod]
+        public void TestEmptyPeekShouldReturnNull() //because peek should be allowed and null is acceptable
+        {
+            stack.Clear();
+            Assert.IsNull(stack.Peek());
+        }
+        [TestMethod]
         public void TestClear()
         {
             stack.Push("Apple");
@@ -45,6 +51,13 @@ namespace Lab5
             stack.Push("Cherry");
             stack.Clear();
             Assert.AreEqual(0, stack.Count);
+
+        }
+        [TestMethod]
+        public void TestEmptyStackPopThrowsException() //popping empty stack should cause exception
+        {
+            stack.Clear();
+            Assert.ThrowsException<IndexOutOfRangeException>(() => stack.Pop()); ;
 
         }
     }
