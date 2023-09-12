@@ -35,7 +35,7 @@ namespace BinaryTreeLib
             {
                 t = new TreeNode(inputArray[mid],null,0);
             }
-            Nodes.Add(t);
+            Nodes.Add(t);// only to aid my tests, nodes are not meant to be iterated with this property
             level++;
             //build left
             if (start!=mid) { 
