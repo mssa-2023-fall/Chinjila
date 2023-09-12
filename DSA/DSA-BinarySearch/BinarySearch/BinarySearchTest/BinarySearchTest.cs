@@ -50,6 +50,43 @@ namespace BinarySearchTest
             Assert.AreEqual(expectedIndex, result);
 
         }
+        [TestMethod]
+        public void BinarySearchShouldWorkWith1ElementArray()
+        {
+            int[] sorted = { 1 };
+
+            int result = BinarySearcher.Search(sorted, 1);
+            Assert.AreEqual(0, result);
+
+        }
+        [TestMethod]
+        public void BinarySearchShouldWorkWith0ElementArray()
+        {
+            int[] empty = { };
+
+            Assert.ThrowsException<ArgumentException>(() => BinarySearcher.Search(empty, 5));
+
+        }
+       
+        [TestMethod]
+        public void BinarySearchShouldWorkWith256ElementArray()
+        {
+            int[] sorted = GenerateSortedNumber(256);
+
+            int result = BinarySearcher.Search(sorted, 0);
+            Assert.AreEqual(0, result);
+            result = BinarySearcher.Search(sorted, 255);
+            Assert.AreEqual(255, result);
+
+        }
+        [TestMethod]
+        public void UnsortedArrayShouldThrowArgumentException()
+        {
+            int[] unsorted =  { 1, 5, 3, 7, 9, 12, 13, 14, 15 };
+
+            Assert.ThrowsException<ArgumentException>(()=>BinarySearcher.Search(unsorted, 5));
+
+        }
 
         public static int[] GenerateRandomNumber(int size)
         {
