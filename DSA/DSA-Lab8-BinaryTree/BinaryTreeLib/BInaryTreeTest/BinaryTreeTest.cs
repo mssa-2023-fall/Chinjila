@@ -15,6 +15,21 @@ namespace BInaryTreeTest
 
         }
 
+        [TestMethod] public void BinaryTreeSearchItem()
+        {
+            BinaryTree tree = new BinaryTree(GenerateSortedNumber(100));
+            int target = 0;
+            TreeNode node = tree.Root;
+            int opCount = 0;
+            while (node.Value != target)
+            { 
+                if (target > node.Value) {node=node.RightChild;} else { node=node.LeftChild;}
+                opCount++;
+            }
+            Assert.IsNotNull(node);
+            Assert.AreEqual(node.Value,target);
+            Assert.IsTrue(opCount<=6);
+        }
         [TestMethod]
         public void LeftTreeTraversal()
         {
