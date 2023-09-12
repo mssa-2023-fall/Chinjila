@@ -82,8 +82,8 @@ namespace BinarySearchTest
         [TestMethod]
         public void UnsortedArrayShouldThrowArgumentException()
         {
-            int[] unsorted =  { 1, 5, 3, 7, 9, 12, 13, 14, 15 };
-
+            int[] unsorted = GenerateRandomNumber(10);
+            unsorted[0] = unsorted[9];
             Assert.ThrowsException<ArgumentException>(()=>BinarySearcher.Search(unsorted, 5));
 
         }
