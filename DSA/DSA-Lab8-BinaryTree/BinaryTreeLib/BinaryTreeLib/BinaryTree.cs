@@ -29,14 +29,13 @@ namespace BinaryTreeLib
                 TreeNode t;
             if (_parent != null)
             {
-                t = new TreeNode(inputArray[mid], _parent,level) ;
+                t = new TreeNode(inputArray[mid], _parent,_parent.Level+1) ;
                 
             } else
             {
                 t = new TreeNode(inputArray[mid],null,0);
             }
             Nodes.Add(t);// only to aid my tests, nodes are not meant to be iterated with this property
-            level++;
             //build left
             if (start!=mid) { 
                 t.LeftChild = BuildTree(inputArray, start, mid - 1, t); }
