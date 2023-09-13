@@ -18,7 +18,7 @@ namespace BInaryTreeTest
         [TestMethod] public void BinaryTreeSearchItem()
         {
             BinaryTree tree = new BinaryTree(GenerateSortedNumber(100));
-            int target = 0;
+            int target = 35;
             TreeNode node = tree.Root;
             int opCount = 0;
             while (node.Value != target)
