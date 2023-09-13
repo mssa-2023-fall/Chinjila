@@ -9,6 +9,7 @@ namespace CustomerLogin
 {
     public class CryptoHelper
     {
+        //crypto helper
         const int keySize = 64;
         const int iterations = 350000;
         HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
