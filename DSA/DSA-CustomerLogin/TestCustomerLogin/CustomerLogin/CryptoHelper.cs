@@ -12,8 +12,7 @@ namespace CustomerLogin
         const int keySize = 64;
         const int iterations = 350000;
         HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
-        public byte[] ComputeHash(string input, out byte[] salt) {
-            salt = RandomNumberGenerator.GetBytes(keySize);
+        public byte[] ComputeHash(string input, byte[] salt) {
 
             var hash = Rfc2898DeriveBytes.Pbkdf2(
                 Encoding.UTF8.GetBytes(input),
@@ -37,7 +36,7 @@ namespace CustomerLogin
             return CryptographicOperations.FixedTimeEquals(hashToCompare, passwordHash);
         }
 
-        public async Task<string> DecryptCreditCard(string clearPassword, byte[] passwordHash, byte[] encryptedCreditCard)
+        public async Task<string> DecryptCreditCard(string clearPassword,  byte[] encryptedCreditCard)
         {
             using Aes aes = Aes.Create();
             aes.Key = DeriveKeyFromPassword(clearPassword);
@@ -51,7 +50,7 @@ namespace CustomerLogin
 
             return Encoding.Unicode.GetString(output.ToArray());
         }
-        public async Task<byte[]> EncryptCreditCard(string clearPassword, byte[] passwordHash, string creditCard)
+        public async Task<byte[]> EncryptCreditCard(string clearPassword, string creditCard)
         {
             using Aes aes = Aes.Create();
             aes.Key = DeriveKeyFromPassword(clearPassword);
