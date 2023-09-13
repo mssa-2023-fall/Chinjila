@@ -24,9 +24,7 @@ namespace CustomerLogin
         public string Email { get; }
         public byte[] PasswordHash { get; }
         public byte[] CreditCardHash { get; }
-        public string ReadCreditCardPlainText(string password) {
-            return _cryptoHelper.DecryptCreditCard(password, this.CreditCardHash).Result;
-        }
+   
     }
 
 

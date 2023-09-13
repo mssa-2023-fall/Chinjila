@@ -41,14 +41,17 @@ namespace CustomerLogin.Tests
         [TestMethod()]
         public void TestCreditCardDecryption()
         {
-            Assert.AreEqual("11112222",_customers["alice@live.com"].ReadCreditCardPlainText("password"));
-
+            Assert.AreEqual("11112222", _customers.ReadCreditCard("alice@live.com","password"));
         }
         [TestMethod()]
         public void TestCreditCardDecryptionFailsWithWrongPassword()
         {
-            Assert.ThrowsException<AggregateException>(()=> _customers["alice@live.com"].ReadCreditCardPlainText("badpassword"));
-
+            Assert.ThrowsException<Exception>(()=> _customers.ReadCreditCard("alice@live.com", "badpassword"));
+        }
+        [TestMethod()]
+        public void TestCreditCardDecryptionFailsWithNoUserFound()
+        {
+            Assert.ThrowsException<Exception>(() => _customers.ReadCreditCard("noone@live.com", "password"));
         }
 
     }

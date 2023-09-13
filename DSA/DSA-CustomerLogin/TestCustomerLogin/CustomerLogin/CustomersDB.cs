@@ -28,13 +28,21 @@ namespace CustomerLogin
                 return _cryptoHelper.VerifyHash(password, _customers[username].PasswordHash, _customers[username].Salt);
             }
         }
-   
-   
-
 
         public string ReadCreditCard(string username, string password)
         {
-            return _cryptoHelper.DecryptCreditCard(password, _customers[username].CreditCardHash).Result;
+            if (!_customers.ContainsKey(username)) { throw new Exception("Read Failed"); }
+            var creditCardPlainText=string.Empty;
+            try
+            {
+                creditCardPlainText = _cryptoHelper.DecryptCreditCard(password, _customers[username].CreditCardHash).Result;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Read Failed"); ;
+            }
+                return creditCardPlainText;
         }
 
     }
