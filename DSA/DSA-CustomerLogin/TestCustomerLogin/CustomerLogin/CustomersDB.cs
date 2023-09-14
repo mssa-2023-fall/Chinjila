@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Azure;
+using Azure.Data.Tables;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,13 +17,22 @@ namespace CustomerLogin
         public int Count => _customers.Count;
         public CustomersDB()
         {
-            Customer alice = new Customer("Alice", "alice@live.com", "password", "11112222");
+            Customer alice = new Customer("alice", "alice@live.com", "password", "11112222");
             Customer bob = new Customer("bob", "bob@live.com", "password", "11112222");
             Customer charlie = new Customer("charlie", "charlie@live.com", "password", "11112222");
 
             _customers.Add(alice.Email, alice);
             _customers.Add(bob.Email, bob);
             _customers.Add(charlie.Email, charlie);
+        }
+        public CustomersDB(TableClient tableClient)
+        {
+            Pageable<Customer> customerQuery = tableClient.Query<Customer>();
+
+            foreach (Customer customer in customerQuery)
+            {
+                _customers.Add(customer.Email, customer);
+            }
         }
         public bool Login(string username, string password) {
             if (!_customers.ContainsKey(username)) { return false; }

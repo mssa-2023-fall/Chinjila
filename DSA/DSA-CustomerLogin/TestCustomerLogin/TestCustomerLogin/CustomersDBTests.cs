@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CustomerLogin.Tests
+namespace TestCustomerLogin
 {
     [TestClass()]
     public class CustomersDBTests
