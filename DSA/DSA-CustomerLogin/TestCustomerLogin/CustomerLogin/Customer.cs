@@ -36,11 +36,14 @@ namespace CustomerLogin
         }
 
         public byte[] Salt;
-        public string Name { get; }
-        public string Email { get; }
-        public byte[] PasswordHash { get; }
-        public byte[] CreditCardHash { get; }
-   
+        public string Name;
+        public string Email;
+        public byte[] PasswordHash;
+        public byte[] CreditCardHash;
+        public string PartitionKey { get => this.Email ;set { this.Email = value; } }
+        public string RowKey { get => this.Name; set { this.Name = value; } }
+        public DateTimeOffset? Timestamp { get; set; }
+        public ETag ETag { get; set; }
     }
 
 

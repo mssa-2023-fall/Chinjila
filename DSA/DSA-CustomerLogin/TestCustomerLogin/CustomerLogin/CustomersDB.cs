@@ -1,6 +1,4 @@
-﻿using Azure.Data.Tables;
-using Azure.Security.KeyVault.Keys.Cryptography;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
