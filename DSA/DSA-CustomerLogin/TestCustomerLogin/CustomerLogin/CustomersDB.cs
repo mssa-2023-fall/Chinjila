@@ -1,5 +1,5 @@
-﻿using Azure;
-using Azure.Data.Tables;
+﻿using Azure.Data.Tables;
+using Azure.Security.KeyVault.Keys.Cryptography;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -13,6 +13,9 @@ namespace CustomerLogin
     {
         private Dictionary<string, Customer> _customers=new ();
         private CryptoHelper _cryptoHelper= new();
+        private readonly TableClient table;
+        private readonly CryptographyClient key;
+
         public Customer this[string email] => _customers[email];
         public int Count => _customers.Count;
         public CustomersDB()
@@ -43,16 +46,31 @@ namespace CustomerLogin
 
         public string ReadCreditCard(string username, string password)
         {
-            if (!_customers.ContainsKey(username)) { throw new Exception("Read Failed"); }
-            var creditCardPlainText=string.Empty;
-            try
+            string creditCardPlainText=string.Empty;
+            if (table != null && key != null)
             {
-                creditCardPlainText = _cryptoHelper.DecryptCreditCard(password, _customers[username].CreditCardHash).Result;
-            }
-            catch (Exception)
-            {
+                try {
+                    creditCardPlainText= Encoding.UTF8.GetString(key.Decrypt(EncryptionAlgorithm.RsaOaep, this._customers[username].CreditCardHash).Plaintext);
+                }
+                catch (Exception)
+                {
 
-                throw new Exception("Read Failed"); ;
+                    throw new Exception("Read Failed"); ;
+                }
+            }
+            else
+            {
+                if (!_customers.ContainsKey(username)) { throw new Exception("Read Failed"); }
+                creditCardPlainText = string.Empty;
+                try
+                {
+                    creditCardPlainText = _cryptoHelper.DecryptCreditCard(password, _customers[username].CreditCardHash).Result;
+                }
+                catch (Exception)
+                {
+
+                    throw new Exception("Read Failed"); ;
+                } 
             }
                 return creditCardPlainText;
         }
