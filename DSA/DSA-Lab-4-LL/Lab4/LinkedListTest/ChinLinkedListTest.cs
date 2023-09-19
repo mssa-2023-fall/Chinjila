@@ -367,5 +367,17 @@ namespace LinkedListTest
             Assert.AreEqual(9, testLL.Tail?.Content);
 
         }
-    }
+        [TestMethod]
+        public void TestIndexerFunction()
+        {
+            var initialNode = new ChinNode<int>(5);//index 0
+            var testLL = new ChinLinkedList<int>(initialNode);
+            testLL.AddLast(new ChinNode<int>(6));//index 1
+            testLL.AddLast(new ChinNode<int>(7));//index 2
+            testLL.AddLast(new ChinNode<int>(8));//index 3
+            testLL.AddLast(new ChinNode<int>(9));//index 4
+            testLL.Reset();
+            Assert.AreEqual(8, testLL[3].Content);
+        }
+        }
 }

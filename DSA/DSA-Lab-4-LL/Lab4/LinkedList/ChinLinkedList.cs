@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace LinkedList
 {
@@ -112,7 +113,16 @@ namespace LinkedList
             Count++;
         }
 
- 
+        public INode<T> this[int index] {
+            get
+            {
+                for (int i = 0; i < index; i++)
+                {
+                    this.Nodes.GetEnumerator().MoveNext();
+                }
+                return this.Nodes.GetEnumerator().Current;
+            }
+        }
 
         public void RemoveAt(int IndexPosition)
         {

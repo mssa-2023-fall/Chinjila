@@ -37,5 +37,9 @@ namespace LearnSystemIO
 
             Movie = input.Substring(thirdDoubleQuoteIndex + 1, forthDoubleQuoteIndex - thirdDoubleQuoteIndex - 1);
         }
+        public Winner()
+        {
+            
+        }
     }
 }
