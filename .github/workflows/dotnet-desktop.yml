@@ -38,7 +38,7 @@
 
 name: .NET Core
 
-on:
+on: workflow_dispatch
 
  
 jobs:
