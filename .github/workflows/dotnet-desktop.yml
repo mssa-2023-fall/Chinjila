@@ -39,9 +39,8 @@
 name: .NET Core
 
 on:
-  pull_request:
-    branches: [ "main" ]
 
+ 
 jobs:
 
   build:
