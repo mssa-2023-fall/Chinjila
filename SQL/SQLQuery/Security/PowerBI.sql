@@ -1,0 +1,4 @@
+CREATE SCHEMA [PowerBI]
+    AUTHORIZATION [dbo];
+GO
+

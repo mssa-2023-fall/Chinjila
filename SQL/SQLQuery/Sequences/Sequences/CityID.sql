@@ -1,0 +1,6 @@
+CREATE SEQUENCE [Sequences].[CityID]
+    AS INT
+    START WITH 38187
+    INCREMENT BY 1;
+GO
+

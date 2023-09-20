@@ -1,0 +1,6 @@
+CREATE SEQUENCE [Sequences].[InvoiceLineID]
+    AS INT
+    START WITH 228266
+    INCREMENT BY 1;
+GO
+
