@@ -42,6 +42,10 @@ internal class Program
                 case ConsoleKey.D5:
                     DisplayCustomerCount();
                     break;
+                case ConsoleKey.NumPad6:
+                case ConsoleKey.D6:
+                    TruncateTable();
+                    break;
                 default:
                     break;
             }
@@ -132,7 +136,7 @@ internal class Program
                         ";
                 for (int i = 0; i < 100; i++)
                 {
-                    var parameters = new { customerName = $"John Doe{i}", DateOfBirth = new DateTime(1980, 1, 1).AddDays(Random.Shared.Next(1,10000)) };
+                    var parameters = new { customerName = $"John Doe{i}", DateOfBirth = new DateTime(1980, 1, 1).AddDays(Random.Shared.Next(-10000,10000)) };
                     customersToAdd.Add(parameters);
 
                 }
@@ -184,8 +188,29 @@ internal class Program
 3 - Display All Customers
 4 - Delete a Customer
 5 - Display Count Of Customers
+6 - Truncate Table
 Q - quit
 ");
         }
+    }
+
+    private static void TruncateTable()
+    {
+        string sql =
+             @"
+                Truncate TABLE [vc].[Customers]
+              ";
+        using (var connection = new SqlConnection(ConnStr))
+        {
+            Task t = connection.ExecuteAsync(sql);
+            Console.Write("Truncating Table.");
+            while (!t.IsCompleted)
+            {
+                Task.Delay(300).Wait();
+                Console.Write(".");
+            }
+        }
+
+        Console.WriteLine("Customer Table truncated");
     }
 }
