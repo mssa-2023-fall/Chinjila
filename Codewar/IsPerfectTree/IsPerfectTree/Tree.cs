@@ -20,7 +20,7 @@ namespace Tree
 
         public static bool IsPerfect(TreeNode root)
         {
-            if (IsPerfectNode(root) && depth.Distinct().Count() == 1) { return true; }
+            if (IsPerfectNode(root) && depth.Distinct().Count() <= 1) { return true; }
             else { return false; }
         }
             public static bool IsPerfectNode(TreeNode root)
