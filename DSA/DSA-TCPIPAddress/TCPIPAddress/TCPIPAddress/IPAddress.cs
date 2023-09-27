@@ -32,11 +32,13 @@ namespace TCPIPAddress
             for (int i = 0; i < 4; i++)
             {
                 addressByte[i] = byte.Parse(addresses[0].Split('.')[i]);
-                AddressOctetString += $"{Convert.ToString(addressByte[i], 2).PadLeft(8, '0')}.";
+                AddressOctetString += $"{Convert.ToString(addressByte[i],2).PadLeft(8, '0')}.";
             }
             AddressOctetString = AddressOctetString[0..^1];//rid extra . at the end
+            
             var subnetString =
-                new String(Enumerable.Repeat<char>('1', int.Parse(addresses[1])).ToArray()).PadRight(32, '0');
+                new String(Enumerable.Repeat<char>('1', SubnetSuffix).ToArray()).PadRight(32, '0');
+
             subnetMask[0] = Convert.ToByte(Convert.ToInt16(subnetString[0..8], 2));
             subnetMask[1] = Convert.ToByte(Convert.ToInt16(subnetString[8..16], 2));
             subnetMask[2] = Convert.ToByte(Convert.ToInt16(subnetString[16..24], 2));
@@ -61,7 +63,8 @@ namespace TCPIPAddress
             { return false; }
             return true;
         }
-        public string NetworkID => $"{addressByte[0] & subnetMask[0]}.{addressByte[1] & subnetMask[1]}.{addressByte[2] & subnetMask[2]}.{addressByte[3] & subnetMask[3]}";
+        public string NetworkID => 
+            $"{addressByte[0] & subnetMask[0]}.{addressByte[1] & subnetMask[1]}.{addressByte[2] & subnetMask[2]}.{addressByte[3] & subnetMask[3]}";
         private byte[] NetworkIDBytes {
             get {
                 byte[] result = new byte[4];
@@ -85,7 +88,7 @@ namespace TCPIPAddress
                 return $"{a}.{b}.{c}.{d}";
             }
         }
-            
 
+        public bool IsSameNetwork(IPAddress other)=> this.NetworkID== other.NetworkID;
     }
 }
