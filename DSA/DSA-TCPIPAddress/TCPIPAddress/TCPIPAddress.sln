@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPIPAddress", "TCPIPAddress\TCPIPAddress.csproj", "{5E56ECBA-8936-4D92-81A0-95C56AE7BC5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPIPAddressHelper", "TCPIPAddressHelper\TCPIPAddressHelper.csproj", "{E50628DC-D37F-4716-AC00-5EDD4F0E09CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E56ECBA-8936-4D92-81A0-95C56AE7BC5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E56ECBA-8936-4D92-81A0-95C56AE7BC5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E56ECBA-8936-4D92-81A0-95C56AE7BC5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E56ECBA-8936-4D92-81A0-95C56AE7BC5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E50628DC-D37F-4716-AC00-5EDD4F0E09CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E50628DC-D37F-4716-AC00-5EDD4F0E09CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E50628DC-D37F-4716-AC00-5EDD4F0E09CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E50628DC-D37F-4716-AC00-5EDD4F0E09CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A566940C-A4D2-4E39-BA7D-01C3791C3EA8}
+	EndGlobalSection
+EndGlobal
