@@ -29,7 +29,7 @@ namespace LeetMergeOverlap
 
         //[[1,3],[2,6],[8,10],[15,18]]
 
-        public int[][] Merge(int[][] intervals)
+        public int[][] Merge2(int[][] intervals)
         {
             Array.Sort(intervals, (x, y) => x[0] - y[0]);
 
@@ -63,10 +63,36 @@ namespace LeetMergeOverlap
             }
             return result2;
         }
-
         private int[] mergeTwoPart(int[] ints1, int[] ints2)
         {
             return new int[] { ints1.Concat(ints2).Min(), ints1.Concat(ints2).Max() };
+        }
+
+
+
+        public int[][] Merge(int[][] intervals) { 
+        LeetLinkedList list = new LeetLinkedList();
+            foreach (int[] pair in intervals) {
+                list.AddNode(pair);
+            }
+            return list.ToArray();
+        }
+       
+        public class LeetLinkedList : LinkedList<int[]> { 
+        public void AddNode(int[] node) {
+                if (this.Count == 0) { this.AddFirst(new LinkedListNode<int[]>(node));}
+
+                var last = this.Last?.Value;
+                if (node[0] <= last[1])
+                {
+                    this.Last.Value[0] = new int[] {last[0], last[1], node[0], node[1]}.Min();
+                    this.Last.Value[1] = new int[] {last[0], last[1], node[0], node[1]}.Max();
+                }
+                else
+                {
+                this.AddLast(new LinkedListNode<int[]>(node));
+                }
+            }
         }
     }
 }
