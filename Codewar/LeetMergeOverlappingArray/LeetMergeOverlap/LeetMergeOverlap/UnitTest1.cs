@@ -72,6 +72,7 @@ namespace LeetMergeOverlap
 
         public int[][] Merge(int[][] intervals) { 
         LeetLinkedList list = new LeetLinkedList();
+            Array.Sort(intervals, (x, y) => x[0] - y[0]);//got sort the array first
             foreach (int[] pair in intervals) {
                 list.AddNode(pair);
             }
