@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MakeRESTCall": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "apikey": "MJlmDoAzH4bpDAaflrFqpQ==CTKfPzF6B9Dft0Br"
+      }
+    }
+  }
+}
