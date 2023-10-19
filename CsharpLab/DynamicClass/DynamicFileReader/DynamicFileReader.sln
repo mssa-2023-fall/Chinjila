@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicFileReader", "DynamicFileReader\DynamicFileReader.csproj", "{F2699EF6-AA7B-42A6-98C9-5C8D1F2E125B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2699EF6-AA7B-42A6-98C9-5C8D1F2E125B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2699EF6-AA7B-42A6-98C9-5C8D1F2E125B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2699EF6-AA7B-42A6-98C9-5C8D1F2E125B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2699EF6-AA7B-42A6-98C9-5C8D1F2E125B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CC1C359-7CD6-41CD-880D-E204D5E4AB76}
+	EndGlobalSection
+EndGlobal
