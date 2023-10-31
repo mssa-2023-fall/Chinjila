@@ -14,7 +14,7 @@ namespace ContosoUniversity.Pages.Students
     {
         private readonly ContosoUniversity.Data.SchoolContext _context;
 
-        public IndexModel(ContosoUniversity.Data.SchoolContext context)
+        public IndexModel(ContosoUniversity.Data.SchoolContext context) //injection happens here.
         {
             _context = context;
         }
@@ -25,7 +25,7 @@ namespace ContosoUniversity.Pages.Students
         {
             if (_context.Students != null)
             {
-                Student = await _context.Students.ToListAsync();
+                Student = await _context.Students.ToListAsync();//Select * from Student
             }
         }
     }
