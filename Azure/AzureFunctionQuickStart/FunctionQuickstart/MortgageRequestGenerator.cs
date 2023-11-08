@@ -17,7 +17,7 @@ namespace FunctionQuickstart
 
         [Function("MortgageRequestGenerator")]
         [QueueOutput("mortgage-request",Connection = "imgstorvc")]
-        public string Run([TimerTrigger("*/3 * * * * *")] MyInfo myTimer)
+        public string Run([TimerTrigger("* */5 * * * *")] MyInfo myTimer)
         {
             var principal = Random.Shared.Next(20, 100) * 10_000;
             decimal interestRate = Math.Round(Random.Shared.Next(100, 800) / 100m,2);

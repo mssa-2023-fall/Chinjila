@@ -25,8 +25,9 @@ namespace FunctionQuickstart
         {
             MortgageRequest? request = JsonSerializer.Deserialize<MortgageRequest>(message.Body.ToString());
             if(request == null) { throw new ArgumentNullException(nameof(message)); }
+
             var mortgage = new Mortgage(request.InterestRate, request.Principal, DateTime.Now, request.LoanTermInYears, 0);
-            var monthlyPayment = mortgage.CalculateMonthlyPayment();
+            var monthlyPayment = Math.Round(mortgage.CalculateMonthlyPayment(),2);
             var tableEntry =  new MortgagePayment(request.Principal, request.InterestRate, request.LoanTermInYears, monthlyPayment);
             return tableEntry;
         }
