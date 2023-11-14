@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.10.4" />
     <PackageReference Include="Microsoft.Azure.AppConfiguration.AspNetCore" Version="6.1.1" />
+    <PackageReference Include="Microsoft.FeatureManagement.AspNetCore" Version="3.0.0" />
   </ItemGroup>
 
 </Project>
