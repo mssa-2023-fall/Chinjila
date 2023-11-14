@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "ConsoleAppTableReference": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ConnectionString": "Endpoint=https://vcappconfig.azconfig.io;Id=TiL8;Secret=bqi2Ud+jr5dmqXDJPtd8g7bPft10W6hhOzEg2GDWXHE=",
+        "StorageKey": "LSsJod8R1HiPhk94heCVBDIly36BShELlItmSeD7hBoSRLJYW+6HCjeUQoq7OkwXR0jvVKO8BB4R+AStFrFkNQ=="
+      }
+    }
+  }
+}
