@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "ServiceBusTopicSample": {
+      "commandName": "Project",
+      "commandLineArgs": "--namespace \"glizzy.servicebus.windows.net\"\r\n--connection-variable \"sbconn\"",
+      "environmentVariables": {
+        "sbconn": "Endpoint=sb://glizzy.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=1/INm0TjCdnrWQDXtL+98FMvHMvyJYmt0+ASbPkll8E="
+      }
+    }
+  }
+}
