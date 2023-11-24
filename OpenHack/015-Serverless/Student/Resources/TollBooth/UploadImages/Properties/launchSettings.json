@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "UploadImages": {
+      "commandName": "Project",
+      "commandLineArgs": "DefaultEndpointsProtocol=https;AccountName=purplestorevc;AccountKey=0nbeRRVwiTiUPjpu3Smea26ASOueJmPYI2BRe1ELLmi0Fjp5n4Y18XEZzpkZ8JSuqXfcgzEdMPOT+ASt3JEIbA==;EndpointSuffix=core.windows.net"
+    }
+  }
+}
